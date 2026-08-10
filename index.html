@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Image Processing App</title>
+
+  <!-- Libraries -->
+  <script src="libraries/p5.min.js" type="text/javascript"></script>
+  <script src="libraries/objectdetect.js"></script>
+  <script src="libraries/objectdetect.frontalface.js"></script>
+
+  <style>
+  /* CSS */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      text-align: center;
+      background-color: #f5f5f5;
+    }
+    #main-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: white;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
+    #video-container {
+      margin: 20px auto;
+      border: 2px solid #ddd;
+      background: #222;
+      position: relative;
+      width: 640px;
+      height: 480px;
+    }
+    #video-feed {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    #snapshot-btn {
+      background-color: #4CAF50;
+      color: white;
+    }
+    .mode-btn {
+      background-color: #2196F3;
+      color: white;
+    }
+    .mode-btn.active {
+      background-color: #0d47a1;
+    }
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .grid-item {
+      border: 1px solid #ddd;
+      padding: 5px;
+      background: white;
+    }
+    .grid-label {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .slider-container {
+      margin: 10px 8px 6px;
+      text-align: left;
+    }
+    .slider-container label {
+      display: inline-block;
+      align-items: center;
+      min-width: 90px;
+      font-size: 12px;
+    }
+    .slider-container input[type="range"] {
+      width: 100%;
+    }
+    #confirmation {
+      color: green;
+      font-weight: bold;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+  <!--main container for the app-->
+  <div id="main-container">
+    <h1>Image Processing Application</h1>
+
+    <!--snapshot button and instructions-->
+    <button id="snapshot-btn">Take Snapshot</button>
+    <p>Press spacebar or click the button to capture an image</p>
+    <!--area to show confirmation message-->
+    <div id="confirmation"></div>
+
+    <!--video container to show webcam feed-->
+    <div id="video-container">
+      <!--displaying live feed from webcam-->
+      <video id="video-feed" autoplay playsinline></video>
+    </div>
+    
+    <!--face replacement mode selection buttons-->
+    <div>
+      <h3>Face Replacement Modes:</h3>
+      <!--each button represents a different face replacement mode-->
+      <button id="mode0" class="mode-btn active">0: Face Detection</button>
+      <button id="mode1" class="mode-btn">1: Grayscale Replace</button>
+      <button id="mode2" class="mode-btn">2: Blur Replace</button>
+      <button id="mode3" class="mode-btn">3: Color Convert Replace</button>
+      <button id="mode4" class="mode-btn">4: Pixelate Replace</button>
+    </div>
+    
+    <!--grid for displaying images with different effects-->
+    <div id="image-grid" class="image-grid"></div>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="utils.js"></script>
+  <script src="video.js"></script>
+  <script src="controls.js"></script>
+  <script src="colorSpaces.js"></script>
+  <script src="threshold.js"></script>
+  <script src="grid.js"></script>
+  <script src="faceDetection.js"></script>
+  <script src="faceReplacement.js"></script>
+  <script src="glitchArt.js"></script>
+  <script src="halftoneDots.js"></script>
+  <script src="kaleiodoscope.js"></script>
+  <script src="faceWrap.js"></script>
+  <script src="sketch.js"></script>
+</body>
+</html>
